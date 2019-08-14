@@ -1,0 +1,45 @@
+/*************************************************************
+*                          feed_v2.7               			 *
+*************************************************************/
+
+/* Grid Table (Manual) - General */
+.gridtable                           { position:relative; border-bottom:0; padding-bottom:.5em; }
+.gridtable table                     { border:1px solid #cbd3d4; border-bottom:none; }
+.gridtable table.border              { border:1px solid #cbd3d4; }
+.gridtable tbody                     { background:#fff; }    /* Zebra odd-row */
+.gridtable tr.even, .grid tr.even tr { background:#f6f6f6; } /* Zebra even-row */
+.gridtable tr.on-mouse               { background:#fcf5dd; cursor:pointer; } /* Rows mouse-over */
+.gridtable tr.invalid                { background-color:#d3a5ba !important; }
+.gridtable th, .grid td              { padding:2px 4px 2px 4px; }
+.gridtable th                        { white-space:nowrap; }
+.gridtable td input.input-text       { width:86%; }
+.gridtable table td                  { border-width:0 1px 1px 0; border-color:#dadfe0; border-style:solid; padding:2px 5px; }
+.gridtable table.border td           { background:#fff !important; }
+.gridtable table td.last             { border-right:0; }
+.gridtable table td.product          { text-align:right; }
+.gridtable table td.empty-text       { padding:15px; }
+.gridtable table td .action-select   { width:100%; }
+.gridtable .separator                { padding:0 4px; color:#b9b9b9; }
+
+.gridtable tbody.odd tr              { background:#fff !important; }
+.gridtable tbody.even tr             { background:#f6f6f6 !important; }
+.gridtable tbody.odd tr td,
+.gridtable tbody.even tr td          { border-bottom:0; }
+.gridtable tbody.odd tr.border td,
+.gridtable tbody.even tr.border td   { border-bottom:1px solid #dadfe0; }
+
+/* Grid Table (Manual) - Headings */
+.gridtable tr.headings { background:url(images/sort_row_bg.gif) 0 50% repeat-x; }
+.gridtable tr.headings th { border-width:1px; border-color:#f9f9f9 #d1cfcf #f9f9f9 #f9f9f9; border-style:solid; padding-top:1px; padding-bottom:0; font-size:.9em; }
+.gridtable tr.headings th.last { border-right:0; }
+.gridtable tr.headings th.no-link { /* Grid th with no sorting functionality */ padding-top:2px; padding-bottom:1px; color:#67767e; }
+.gridtable tr.headings th span.nobr { display:block; /* FF3 fix */ }
+.gridtable tr.headings th a { display:block; padding:2px 4px 1px 0; color:#2d444f; text-decoration:none; }
+.gridtable tr.headings th a:hover { color:#d85909; text-decoration:none; }
+.gridtable tr.headings th a.sort-arrow-desc,
+.gridtable tr.headings th a.sort-arrow-asc { background:url(images/sort_on_bg.gif) 0 0 no-repeat; border-bottom:1px solid #fff; border-right:1px solid #fff; padding-bottom:2px; }
+.gridtable tr.headings th span.sort-title { display:block; padding:3px 12px 4px 0; line-height:1; }
+.gridtable tr.headings th a.sort-arrow-desc span.sort-title,
+.gridtable tr.headings th a.sort-arrow-asc span.sort-title { background-position:right 50%; background-repeat:no-repeat; padding:3px 12px 2px 8px; }
+.gridtable tr.headings th a.sort-arrow-desc span.sort-title { background-image:url(images/grid_sort_desc.gif); }
+.gridtable tr.headings th a.sort-arrow-asc span.sort-title { background-image:url(images/grid_sort_asc.gif); }

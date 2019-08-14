@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--  
+/*************************************************************
+*                          feed_v2.7              	     *
+*************************************************************/
+-->
+<layout version="0.1.0"> 
+	<feedmanager_adminhtml_feedmanager_index>
+		<reference name="content">
+			<block type="feedmanager/adminhtml_feedmanager" name="feedmanager" >
+				<block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher" >
+					<action method="setUseConfirm"><params>0</params></action>
+				</block>
+			</block>
+		</reference>
+	</feedmanager_adminhtml_feedmanager_index>
+	<feedmanager_adminhtml_feedmanager_settings>
+		<reference name="content">
+			<block type="feedmanager/adminhtml_feedmanager_settings" name="settings" />
+		</reference>
+	</feedmanager_adminhtml_feedmanager_settings>
+	<feedmanager_adminhtml_feedmanager_mapping>
+		<reference name="content">
+			<block type="feedmanager/adminhtml_feedmanager_mapping" name="mapping" />
+		</reference>
+	</feedmanager_adminhtml_feedmanager_mapping>
+	<feedmanager_adminhtml_feedmanager_ftpdetail>
+		<reference name="content">
+			<block type="feedmanager/adminhtml_feedmanager_ftpdetail" name="ftpdetail" />
+		</reference>
+	</feedmanager_adminhtml_feedmanager_ftpdetail>
+</layout>

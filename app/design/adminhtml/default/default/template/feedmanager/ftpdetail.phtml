@@ -1,0 +1,74 @@
+<?php 
+/*************************************************************
+*                          feed_v2.7              	         *
+*************************************************************/
+
+?>
+<div class="content-header">
+    <h3 class="icon-head"><?php echo $this->getHeader() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml() ?>
+    <?php echo $this->getSaveFtpButtonHtml()?>
+    <?php if($this->FtpId != ""):?><?php echo $this->getdeleteFtpDetailButtonHtml()?><?php endif;?>    
+    <?php echo $this->getCreateFeedButtonHtml()?>
+    <?php if($this->FtpId != ""):?><?php echo $this->getCreateFeedUploadButtonHtml()?><?php endif;?>
+    
+    </p>
+</div>
+<div style="display:none"></div>
+<div id="feedmanager_mapping_content">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Feed Ftp Detail")?></h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset " id="ftpdetail">
+            <div class="hor-scroll">
+                <form action="<?php echo $this->getSaveFtpUrl() ?>" method="post" name="feed_ftp" id="feed_ftp" enctype="multipart/form-data">
+                <?php echo $this->getBlockHtml('formkey')?>
+                <input type="hidden" name="feed_id" value="<?php echo $this->getRequest()->getParam('id');?>" />
+                <?php if($this->FtpId != ""):?><input type="hidden" name="feedmanagerftpdetail_id" value="<?php echo $this->FtpId;?>" /><?php endif;?>
+                    <table cellspacing="2" class="form-list" width="100%">
+                        <tr>
+                            <td class="label"><?php echo $this->__("FTP Server Host Name");?><span class="required">*</span></td>
+                            <td class="value"><input id="hostname" name="hostname" type="text" <?php if($this->FtpId != ""):?> value="<?php echo $this->FtpData['hostname'];?>" <?php endif;?> class="required-entry required-entry input-text"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><?php echo $this->__("FTP Server Login");?><span class="required">*</span></td>
+                            <td class="value"><input id="login" name="login" type="text" <?php if($this->FtpId != ""):?> value="<?php echo $this->FtpData['login'];?>" <?php endif;?> class="required-entry required-entry input-text"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><?php echo $this->__("FTP Server Password");?><span class="required">*</span></td>
+                            <td class="value"><input id="password" name="password" type="password" <?php if($this->FtpId != ""):?> value="<?php echo $this->FtpData['password'];?>" <?php endif;?> class="required-entry required-entry input-text"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><?php echo $this->__("FTP Directory");?></td>
+                            <td class="value"><input id="directory" name="directory" type="text" <?php if($this->FtpId != ""):?> value="<?php echo $this->FtpData['directory'];?>" <?php endif;?> class="input-text"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var ftpForm = new varienForm('feed_ftp', '');
+    ftpForm._processValidationResult = function(transport) {
+        var response = transport.responseText.evalJSON();
+        if (response.error){
+            if (response.attribute && $(response.attribute)) {
+                $(response.attribute).setHasError(true, productForm);
+                Validation.ajaxError($(response.attribute), response.message);
+                $(response.attribute).focus();
+            }
+            else if ($('messages')) {
+                $('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
+            }
+        }
+        else{
+            ftpForm._submit();
+        }
+    };
+//]]>    
+</script>

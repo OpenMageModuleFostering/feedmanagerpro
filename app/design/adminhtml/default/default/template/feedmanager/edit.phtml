@@ -1,0 +1,101 @@
+<?php 
+/*************************************************************
+*                          feed_v2.7              	         *
+*************************************************************/
+
+?>
+<div class="content-header">
+    <h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+    <p class="content-buttons form-buttons">
+	    <button style="" onclick="setLocation('<?php echo $this->getUrl("*/*/") ?>');" class="scalable back" type="button" id="save_continue"><span><?php echo $this->__("Back"); ?></span></button>
+	    <button style="" onclick="setLocation('window.location.href');" class="scalable" type="button" id="save_continue"><span><?php echo $this->__("Reset"); ?></span></button>
+	    <?php if($this->getRequest()->getParam("id") != ""):?>
+	    <button style="" onclick="deleteConfirm('Are you sure you want to do this?', '<?php echo $this->getUrl("*/*/delete",array("id"=>$this->getRequest()->getParam("id"))) ?>');" class="scalable delete" type="button" id="save_continue"><span><?php echo $this->__("Delete Item"); ?></span></button>
+	    <?php endif;?>
+	    <button style="" onclick="editForm.submit();" class="scalable save" type="button" id="save_continue"><span><?php echo $this->__("Save Item"); ?></span></button>
+	    <button style="" onclick="saveAndContinueEdit()" class="scalable save" type="button" id="save_continue"><span><?php echo $this->__("Save And Continue Edit"); ?></span></button>
+	    <?php if( Mage::registry('feedmanager_data') && Mage::registry('feedmanager_data')->getId() ):?>
+	    <button style="" onclick="setLocation('<?php echo $this->getUrl("*/*/settings",array("id"=>$this->getRequest()->getParam('id'))); ?>')" class="scalable save" type="button" id="feed_settings"><span><?php echo $this->__("Feed Settings"); ?></span></button>
+	    <?php endif;?>
+    </p>
+</div>
+
+<div style="display:none"></div>
+<div id="feedmanager_edit_content">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Feed Information")?></h4>
+            <div class="form-buttons"></div>
+		</div>
+		<div class="fieldset " id="eedmanager_form">
+           	<div class="hor-scroll">
+           		<form action="<?php echo $this->getUrl('*/*/save', array("id"=>$this->getRequest()->getParam("id")));?>" method="post" name="edit_form" id="edit_form" enctype="multipart/form-data">
+           		<?php echo $this->getBlockHtml('formkey')?>
+					<div class="hor-scroll">
+						<table cellspacing="0" class="form-list">
+							<tbody>
+							<tr>
+								<td class="label"><label for="site_name"><?php echo $this->__("Site Name") ?> <span class="required">*</span></label></td>
+								<td class="value"><input type="text" class=" required-entry input-text" value="<?php echo $this->_formdata->getSiteName()?>" name="site_name" id="site_name"></td>
+								<td id="note_site_name" class="value" style="padding:0 0 0 10px;"><small><?php echo $this->__("e.g. Google Base, Froogle, ...") ?></small></td>
+							</tr>
+							<tr>
+								<td class="label"><label for="filename"><?php echo $this->__("File Name") ?> <span class="required">*</span></label></td>
+								<td class="value"><input type="text" class=" required-entry input-text" value="<?php echo $this->_formdata->getFilename()?>" name="filename" id="filename"></td>
+								<td id="note_filename" class="value" style="padding:0 0 0 10px;"><small><?php echo $this->__("e.g. 'myfeed', do not add file extension") ?></small></td>
+							</tr>
+							<tr>
+								<td class="label"><label for="format"><?php echo $this->__("File Format") ?></label></td>
+								<td class="value"><select class=" select" name="format" id="format">
+									<option value="0" <?php if($this->_formdata->getFormat() == 0):?> selected="selected" <?php endif;?> ><?php echo $this->__(".txt") ?></option>
+									<option value="1" <?php if($this->_formdata->getFormat() == 1):?> selected="selected" <?php endif;?> ><?php echo $this->__(".csv") ?></option>
+								</select></td>
+				    			<td id="note_format"><small>&nbsp;</small></td>
+				    		</tr>
+							<tr>
+				        		<td class="label"><label for="websites"><?php echo $this->__("Websites") ?> <span class="required">*</span></label></td>
+				    			<td class="value">
+				    				<select class=" required-entry select" name="websites" id="websites">
+				    				<?php //$currentStore = explode(",",$this->_formdata->getWebsites())?>
+				    				<?php foreach ($this->_websites as $website): ?>
+				    					<?php $showWebsite=false; ?>
+				    					<?php foreach ($website->getGroups() as $group): ?>
+					    					<?php $showGroup=false; ?>
+											<?php foreach ($this->getStores($group) as $store): ?>
+								                <?php if ($showWebsite == false): ?>
+								                    <?php $showWebsite = true; ?>
+								                    <optgroup label="<?php echo $website->getName() ?>"></optgroup>
+								                <?php endif; ?>
+								                <?php if ($showGroup == false): ?>
+								                    <?php $showGroup = true; ?>
+								                    <optgroup label="&nbsp;&nbsp;&nbsp;<?php echo $group->getName() ?>">
+								                <?php endif; ?>
+								                <option value="<?php echo $website->getId().",".$store->getId() ?>"<?php if($this->_formdata->getStore() == $store->getId()): ?> selected="selected"<?php endif; ?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $store->getName() ?></option>
+								            <?php endforeach; ?>
+								            <?php if ($showGroup): ?>
+								                </optgroup>
+								            <?php endif; ?>					    					
+					    				<?php endforeach;?>
+				    				<?php endforeach;?>
+								</select></td>
+				    			<td id="note_websites"><small>&nbsp;</small></td>
+				    		</tr>
+				    		<tr>
+								<td class="label"><label for="store_url"><?php echo $this->__("Store Url") ?></label></td>
+								<td class="value"><input type="checkbox" name="store_url" id="store_url" <?php if($this->_formdata->getStoreUrl() == 1):?> checked="checked" <?php endif;?> /></td>
+				    			<td id="note_store_url" class="value" style="padding:0 0 0 10px;"><small><?php echo $this->__("e.g. http://www.yourdomain.com/product_url?___store=store_code") ?></small></td>
+				    		</tr>
+				            </tbody>
+				        </table>
+					</div>
+           		</form>
+           	</div>
+        </div>
+	</div>
+</div>	
+<script type="text/javascript">
+var editForm = new varienForm('edit_form', '');
+function saveAndContinueEdit(){
+	editForm.submit($('edit_form').action+'back/edit/');
+}
+</script>

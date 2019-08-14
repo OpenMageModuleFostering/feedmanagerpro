@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<package>
+    <name>FeedManagerPro</name>
+    <version>2.7.7</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>&lt;p&gt;&lt;strong&gt;Send your data anywhere via FTP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unlimited&lt;/strong&gt; feeds&lt;/p&gt;
+&lt;p&gt;daily cron&lt;strong&gt;&lt;br /&gt;100% customisable&lt;/strong&gt; feed construction&lt;br /&gt;use it to export your product data&lt;br /&gt;use it compile feed for &lt;strong&gt;Turbo Lister for eBay&lt;/strong&gt;&lt;br /&gt;use it to compile feed for &lt;strong&gt;Amazon, Play, Overture!&lt;/strong&gt;&lt;strong&gt;Very flexible product out of the box&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span style="color: #ff0000;"&gt;&lt;span style="font-size: medium;"&gt;Free 7 Day trial - just click the 'sample' link below&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span style="font-size: xx-large;"&gt;&lt;span style="font-family: arial black,avant garde;"&gt;&lt;a href="demo-devgento"&gt;DEMO&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;&lt;/strong&gt;&lt;/p&gt;</summary>
+    <description>&lt;p&gt;&lt;span style="color: #ff0000;"&gt;&lt;strong&gt;REQUIRES ION CUBE LOADER INSTALLED ON YOUR SERVER&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;object width="500" height="405" data="http://www.youtube.com/v/ggfowRzeFxc&amp;amp;hl=en_US&amp;amp;fs=1&amp;amp;color1=0xe1600f&amp;amp;color2=0xfebd01&amp;amp;border=1" type="application/x-shockwave-flash"&gt;
+&lt;param name="allowFullScreen" value="true" /&gt;
+&lt;param name="allowscriptaccess" value="always" /&gt;
+&lt;param name="src" value="http://www.youtube.com/v/ggfowRzeFxc&amp;amp;hl=en_US&amp;amp;fs=1&amp;amp;color1=0xe1600f&amp;amp;color2=0xfebd01&amp;amp;border=1" /&gt;
+&lt;param name="allowfullscreen" value="true" /&gt;
+&lt;/object&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hi, do you need to:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="bullet"&gt;
+&lt;li&gt;send your product data in a&lt;strong&gt; daily feed&lt;/strong&gt; to places like Froogle, PriceGrabber, DealTime, Shopzilla or Kelkoo to name a few?&lt;/li&gt;
+&lt;li&gt;send &lt;strong&gt;different data&lt;/strong&gt; and prices to each one of these places?&lt;/li&gt;
+&lt;li&gt;send &lt;strong&gt;custom data feeds&lt;/strong&gt; with static tracking text?&lt;/li&gt;
+&lt;li&gt;do  this &lt;strong&gt;daily and automatically&lt;/strong&gt; with some &lt;strong&gt;business rules&lt;/strong&gt;?&lt;/li&gt;
+&lt;li&gt;create data feeds to get your product into &lt;strong&gt;eBay via Blackthorne&lt;/strong&gt; or &lt;strong&gt;Turbo Lister&lt;/strong&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you answered yes to &lt;strong&gt;any of these&lt;/strong&gt; then,&lt;strong&gt; FeedManager&lt;/strong&gt; by &lt;a href="http://www.devgento.com"&gt;&lt;strong&gt;Devgento.com&lt;/strong&gt;&lt;/a&gt; is the solution for you!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You can have an unlimited number of these feeds on your store!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;- wow, thats powerfull!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Feed destination requirements&lt;/strong&gt;: FTP &lt;em&gt;username&lt;/em&gt; &amp;amp; &lt;em&gt;password&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="http://www.magentocommerce.com/extension/2950"&gt;Magento Connect - Unlimited Feed Manager&lt;/a&gt;&lt;/strong&gt;&lt;em&gt;&lt;br /&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="bullet"&gt;
+&lt;li&gt;&lt;a href="http://www.magentocommerce.com/extension/2950/unlimited_feedmanager"&gt;http://www.magentocommerce.com/extension/2950/unlimited_feedmanager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ecommerceshare.com/articles/flushtable-keep-mysql-small/"&gt;http://www.ecommerceshare.com/articles/flushtable-keep-mysql-small/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.devgento.co.uk/unlimited-magento-feed-manager-shopping-comparison-data-feed"&gt;http://www.devgento.co.uk/unlimited-magento-feed-manager-shopping-comparison-data-feed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://twitter.com/devgento"&gt;http://twitter.com/devgento&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.magentonews.co.uk/magento-buzz/httpwww-devgento-com-aucatalogproductviewid12-magento-shopping-comparison-feed-manager-unlimited/"&gt;http://www.magentonews.co.uk/magento-buzz/httpwww-devgento-com-aucatalogproductviewid12-magento-shopping-comparison-feed-manager-unlimited/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    <notes>This is a working and tested extension on all our client sites.</notes>
+    <authors><author><name>Nick Angeli</name><user>auto-converted</user><email>n.angeli@devgento.com</email></author></authors>
+    <date>2010-05-27</date>
+    <time>07:06:35</time>
+    <contents><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="images"><file name="grid_sort_asc.gif" hash="b78c3a1a27ac9672a31b7d1bbac60322"/><file name="grid_sort_desc.gif" hash="d958b946eba3dba863d724530a0dba1a"/><file name="sort_on_bg.gif" hash="0cb36788ed4fbf19e657acbc75a3f1b8"/><file name="sort_row_bg.gif" hash="f2e1c5cb26b9f5211419b99d30745244"/></dir><file name="feedmanager.css" hash="0726b2aade6fc78126037b8c923bf7b9"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="feedmanager.xml" hash="051338a13032b81a05371fcd45f71982"/></dir><dir name="template"><dir name="feedmanager"><file name="edit.phtml" hash="d2b7c92c2f2e08f2be21f87ffaa8da05"/><file name="feed.phtml" hash="ab350932f69b58f88f7be2b21fedff24"/><file name="ftpdetail.phtml" hash="c16d2142acdde7e54b1af2975fa474c3"/><file name="mapping.phtml" hash="aafd99c4a86f6e77f15b4484affa4d65"/><file name="settings.phtml" hash="4267d4974d505393c3e9f736de23cc7b"/></dir></dir></dir></dir></dir></target><target name="magelocal"><dir name="Devgento"><dir name="Feedmanager"><dir name="Block"><dir name="Adminhtml"><dir name="Feedmanager"><file name="Edit.php" hash="928963d5c9dd8df1a07219c8e5f7e86b"/><file name="Ftpdetail.php" hash="587197a3866ef676475bfd490c694d39"/><file name="Grid.php" hash="41a115af8b75436b2036e8d725df695f"/><file name="Mapping.php" hash="d20a0690e6166355db96b06109fbfa96"/><file name="Settings.php" hash="d3935a43fb214b5d44657d1581d86ed6"/></dir><file name="Feedmanager.php" hash="d21b6a81737bda665c6c0bdc4b439954"/></dir><dir name="System"><dir name="Config"><dir name="Form"><dir name="Fieldset"><dir name="Devgento"><file name="Extensions.php" hash="da16ad5dceb85d35ba97d3b2b7404fa9"/></dir></dir></dir></dir></dir><file name="Feedmanager.php" hash="bb04b16b20c8841d01a9fcbbbca92fea"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="FeedmanagerController.php" hash="b06fd3dff6e723332e31dc36eb5ebecb"/></dir><file name="IndexController.php" hash="633f7ae27de45fd020286f451aa30307"/></dir><dir name="etc"><file name="config.xml" hash="ab6cf49ba9766174fa282ac34b05cc07"/><file name="system.xml" hash="ac2d4c6fd7a41ba8b60411827feef7b6"/></dir><dir name="feed"><file name="asdf.txt" hash="fb29e935ad0cd60a6ce13bf747fc93fe"/><file name="sadfsadf.txt" hash="fb29e935ad0cd60a6ce13bf747fc93fe"/></dir><dir name="Helper"><file name="Data.php" hash="c70c7dc6080bb715aa2262c0a4cc8fd8"/></dir><dir name="lib"><file name="function.php" hash="1a1ec5d2aabfe25e4355bd3ece1a71de"/></dir><dir name="Model"><dir name="Mysql4"><dir name="Feedmanager"><file name="Collection.php" hash="a31ef4ae9f96984802052ad8925b904b"/></dir><dir name="Feedmanagerftpdetail"><file name="Collection.php" hash="7a62866eb66dfc58014079e04d3965dd"/></dir><dir name="Feedmanagermapping"><file name="Collection.php" hash="13ce667a436f4bcbc823e3a90c2637f8"/></dir><dir name="Feedmanagersettings"><file name="Collection.php" hash="02751015fd11053f1e092c408648dd86"/></dir><file name="Feedmanager.php" hash="9d2980282acfce6bc91d7e070cf075c9"/><file name="Feedmanagerftpdetail.php" hash="98b59ccdb636b26282401d5ca7be9f7d"/><file name="Feedmanagermapping.php" hash="3e685da5eb1856c4e9651c82e4426672"/><file name="Feedmanagersettings.php" hash="9bbece9f3d86cdfd37e0976fd6bac040"/><file name="Feedmanagerversion.php" hash="eeab87d70f1cd70b0673d4f7ab6f44fa"/></dir><file name="Feedmanager.php" hash="b9123d396fe3bd4489a342b234389d55"/><file name="Feedmanagerftpdetail.php" hash="1185030014fcffa683afb6f7cdfc870c"/><file name="Feedmanagermapping.php" hash="0ebbec76099bbd62dd46441db86786ca"/><file name="Feedmanagersettings.php" hash="7d30aabbd31d1f329276c4b1bb4bea94"/><file name="Feedmanagerversion.php" hash="ef54f343367cd8302dca997dd87e5512"/><file name="Status.php" hash="e4e320fe0d45b5cc17646dedb70d6a50"/><file name="Storefields.php" hash="2c79efb9455328764fe27935be652867"/></dir><dir name="sql"><dir name="feedmanager_setup"><file name="mysql4-install-2.7.php" hash="122075d9a7119dfe1ba419ce4e5f47b4"/></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><file name="Devgento_Feedmanager.csv" hash="fe3056069788e339b045934cf7cbb043"/></dir><dir name="nl_NL"><file name="Devgento_Feedmanager.csv" hash="5008260538783907482e9d0feab29eb4"/></dir></target><target name="mageetc"><dir name="modules"><file name="Devgento_Feedmanager.xml" hash="1b8e17131f67d5a8a36ba7ca46b88213"/></dir></target><target name="mage"><dir name="."><file name="createfeed.php" hash="357c9f9945dfb5d369f139a553b9240f"/></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

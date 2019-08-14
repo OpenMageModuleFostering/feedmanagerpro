@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/*************************************************************
+*                          feed_v2.7								 *
+*************************************************************/
+ -->
+<config>
+	<tabs>
+		<devgento translate="label" module="feedmanager">
+			<label>Devgento Extensions</label>
+			<sort_order>100</sort_order> 
+		</devgento>
+	</tabs>
+	<sections>
+		<feedmanager translate="label" module="feedmanager">
+			<label>Feedmanager</label>
+			<tab>devgento</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>933</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<feed translate="label">
+					<comment>&lt;strong&gt;Please note&lt;/strong&gt;, There are no configuration options to be selected here.</comment>
+					<label>Feedmanager</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>13</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+				</feed>
+			</groups>
+		</feedmanager>
+		<devgento_info translate="label">
+			<label>Info</label>
+			<tab>devgento</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>1000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<info translate="label">
+					<label>Installed Devgento Extensions</label>
+					<frontend_model>feedmanager/system_config_form_fieldset_devgento_extensions</frontend_model>
+					<sort_order>13</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+				</info>
+			</groups>
+		</devgento_info>
+	</sections>
+</config>

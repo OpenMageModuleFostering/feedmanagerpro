@@ -1,0 +1,71 @@
+Feedmanager Module - Ver 1.3.1
+No Items Found,No Items Found
+Feed Manager,Feed Manager
+ID,ID
+Site Name,Site Name
+Feed Generated Date,Feed Generated Date
+Feed Schedule Date,Feed Schedule Date
+Action,Action
+Edit,Edit
+Generate Feed,Generate Feed
+Delete,Delete
+Are you sure,Are you sure
+Save Item,Save Item
+Delete Item,Delete Item
+Save And Continue Edit,Save And Continue Edit
+Feed Settings,Feed Settings
+Edit Primary Detail,Edit Primary Detail
+Add Primary Detail,Add Primary Detail
+Back,Back
+Save Ftp Detail,Save Ftp Detail
+Create Feed,Create Feed
+Create Feed and Upload,Create Feed and Upload
+Delete FTP,Delete FTP
+Feed Manager Ftp Detail - ,Feed Manager Ftp Detail - 
+Save Mapping,Save Mapping
+Delete Row,Delete Row
+Create New Row,Create New Row
+Edit FTP Detail,Edit FTP Detail
+Import Mapping,Import Mapping
+Export Mapping,Export Mapping
+Feed Manager Mapping - ,Feed Manager Mapping - 
+Save Settings,Save Settings
+Edit Mapping,Edit Mapping
+Feed Manager Settings - ,Feed Manager Settings - 
+Feed information,Feed information
+Site Name,Site Name
+File Name,File Name
+e.g. Google Base, Froogle, ...,e.g. Google Base, Froogle, ...
+e.g. 'myfeed', do not add file extension,e.g. 'myfeed', do not add file extension
+File Format,File Format
+Item Information,Item Information
+Title,Title
+File,File
+Status,Status
+Enabled,Enabled
+Disabled,Disabled
+Content,Content
+Add New Site,Add New Site
+Items Manager,Items Manager
+Item News,Item News
+Item does not exist,Item does not exist
+Site was successfully saved,Site was successfully saved
+Unable to find item to save,Unable to find item to save
+Item was successfully deleted,Item was successfully deleted
+Feed settigns was successfully saved,Feed settigns was successfully saved
+Authentication failed,Authentication failed
+Feed mapping was successfully saved,Feed mapping was successfully saved
+File was successfully imported.,File was successfully imported.
+Feed FTP Detail was successfully saved,Feed FTP Detail was successfully saved
+FTP Detail was removed,FTP Detail was removed
+Feed was successfully created and uploaded to Server.,Feed was successfully created and uploaded to Server.
+Feed was successfully created.,Feed was successfully created.
+click,click
+here,here
+to download feed.,to download feed.
+Feed was successfully created and uploaded to Server.,Feed was successfully created and uploaded to Server.
+Please select item(s),Please select item(s)
+Total of %d record(s) were successfully deleted ,Total of %d record(s) were successfully deleted 
+Feed Not Uploading because of Incorrect FTP detail or Not Connecting to given FTP Server.,Feed Not Uploading because of Incorrect FTP detail or Not Connecting to given FTP Server.
+Feed Not Generateing. It seems these is some issue to creating feed.,Feed Not Generateing. It seems these is some issue to creating feed.
+Products not found relavent to Feed Setting Criteria.,Products not found relavent to Feed Setting Criteria.

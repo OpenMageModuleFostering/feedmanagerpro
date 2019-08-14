@@ -1,0 +1,372 @@
+<?php 
+/*************************************************************
+*                          feed_v2.7            	         *
+*************************************************************/
+
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('feedmanager.css') ?>"  />
+<div class="content-header">
+    <h3 class="icon-head"><?php echo $this->getHeader() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml() ?>
+    <?php echo $this->getSaveMappingButtonHtml();?>
+    <?php if($this->MappingData->getItems()):?><?php echo $this->getFTPMappingButtonHtml();?><?php endif;?>
+    </p>
+</div>
+<div style="display:none"></div>
+<div id="feedmanager_mapping_content">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Feed Mapping Import / Export")?></h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset " id="mapping import/export">
+            <div class="hor-scroll">
+                <form action="<?php echo $this->getImportMappingUrl() ?>" method="post" name="feed_mapping_ex_im" id="feed_mapping_ex_im" enctype="multipart/form-data">
+                <?php echo $this->getBlockHtml('formkey')?>
+                    <table cellspacing="0" cellpadding="0" class="form-list" width="100%">
+                        <tr>
+                            <td class="label"><?php echo $this->__("Mapping File") ;?><span class="required">*</span></td>
+                            <td class="value"><input type="file" name="importfile" id="importfile" class="required-entry required-entry input-text" /></td>
+                            <td class="value"><?php echo $this->getMappingImportButtonHtml();?></td>
+                            <td class="value" style="padding:0 0 0 10px;"><?php echo $this->__("File should be .txt file with tab '\\t' delimited");?></td>
+                        </tr>
+                        <?php if($this->MappingData->getItems()):?>
+                        <tr>
+                            <td class="value" colspan="3"><?php echo $this->getMappingExportButtonHtml();?></td>
+                        </tr>
+                        <?php endif;?>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none"></div>
+<div id="feedmanager_mapping_content">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Feed Mapping")?></h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset " id="mapping">
+            <div class="gridtable">
+                <div class="hor-scroll">
+                    <form action="<?php echo $this->getSaveMappingUrl() ?>" method="post" name="feed_mapping" id="feed_mapping" enctype="multipart/form-data">
+                    <?php echo $this->getBlockHtml('formkey')?>
+                    <input type="hidden" name="hidDelete" id="hidDelete" value="" />
+                    <input type="hidden" name="feed_id" value="<?php echo $this->FeedId;?>" />
+                    <input type="hidden" name="mode" value="<?php echo $this->__('add');?>" />
+						<div style="text-align:right;padding:0px 0px 2px 0px"><?php echo $this->getCreateButtonHtml() ?></div>						
+                        <table cellspacing="0" cellpadding="0" class="data" id="mapping-table" width="100%">
+                             <tr class="headings"  id="row-options">
+                                <th width="5%"><?php echo $this->__("Pos");?></th>
+                                <th width="11%"><?php echo $this->__("Field/Title");?></th>
+                                <th width="11%"><?php echo $this->__("Prefix");?></th>
+                                <th width="10%"><?php echo $this->__("Type");?></th>
+                                <th width="13%"><?php echo $this->__("Data");?></th>
+                                <th width="12%"><?php echo $this->__("Suffix");?></th>
+                                <th width="10%"><?php echo $this->__("Type");?></th>
+                                <th width="13%"><?php echo $this->__("Data");?></th>
+                                <th width="12%"><?php echo $this->__("Suffix");?></th>
+                                <th width="3%">&nbsp;</th>
+                            </tr>
+                            <?php $counter = 0;?>
+                            <?php if($this->MappingData->getItems()):?>
+
+                            	<?php foreach($this->MappingData->getItems() as $_key=>$_value):?>
+                            		<?php $data = $_value->getData(); ?>
+                                    <tr>
+                                        <td align="center" width="5%"><input type="text" name="row[<?php echo $counter;?>][order_by]" value="<?php echo $data['order_by'];?>" size="1"/></td>
+                                        <td align="center" width="11%"><input type="text" name="row[<?php echo $counter;?>][title]" value="<?php echo $data['title'];?>" size="8" /></td>
+                                        <td align="center" width="11%"><input type="text" name="row[<?php echo $counter;?>][prefix]" value="<?php echo $data['prefix'];?>" size="7" /></td>
+                                        <td align="center" width="10%">
+                                            <select name="row[<?php echo $counter;?>][type]" id="row[<?php echo $counter;?>][type]" onchange="checktype(this,'<?php echo $counter;?>');">
+                                                <option  value="0" <?php if($data['type'] == 0):?> selected="selected" <?php endif;?>><?php echo $this->__("Standard");?></option>
+                                                <option  value="1" <?php if($data['type'] == 1):?> selected="selected" <?php endif;?>><?php echo $this->__("Static");?></option>
+                                            </select>
+                                        </td>
+                                        <td align="center" width="13%">
+                                        	<?php $style="";?>
+                                        	<?php if($data['type'] == 1): $style="display:none"; endif;?>
+                                            <select name="row[<?php echo $counter;?>][data]" id="row[<?php echo $counter;?>][data]" style="width:100px;<?php echo $style;?>" >
+                                                <option value=""><?php echo $this->__("Select");?></option>
+                                            <?php foreach($this->StoreFields as $_k=>$_v):?>
+                                                <option value="<?php echo $_k;?>" <?php if($data['data'] == $_k):?> selected="selected" <?php endif;?> <?php if(in_array($_k,$this->MappedStoreFields['data'])):?> style="color:red" <?php endif; ?> ><?php echo $_v;?></option>
+                                            <?php endforeach;?>
+                                            </select>
+                                            <input type="text" name="row[<?php echo $counter;?>][datatext]" id="row[<?php echo $counter;?>][datatext]" value="<?php echo $data['data'];?>" size="10" <?php if($data['type'] == 0):?> style="display:none" <?php endif;?>  />
+                                        </td>
+                                        <td align="center" width="12%"><input type="text" name="row[<?php echo $counter;?>][suffix]" value="<?php echo $data['suffix'];?>" size="9" /></td>
+                                        <td align="center" width="10%">
+                                            <select name="row[<?php echo $counter;?>][type1]" id="row[<?php echo $counter;?>][type1]" onchange="checktype1(this,'<?php echo $counter;?>');">
+                                                <option  value="0" <?php if($data['type1'] == 0):?> selected="selected" <?php endif;?> ><?php echo $this->__("Standard");?></option>
+                                                <option  value="1" <?php if($data['type1'] == 1):?> selected="selected" <?php endif;?>><?php echo $this->__("Static");?></option>
+                                            </select>
+                                        </td>
+                                        <td align="center" width="13%">
+                                        	<?php  $style = ""; ?>
+                                        	<?php if($data['type1'] == 1): $style="display:none"; endif;?>
+                                            <select name="row[<?php echo $counter;?>][data1]" id="row[<?php echo $counter;?>][data1]" style="width:100px;<?php echo $style;?>">
+                                                <option value=""><?php echo $this->__("Select");?></option>
+                                            <?php foreach($this->StoreFields as $_k=>$_v):?>
+                                                <option value="<?php echo $_k;?>" <?php if($data['data1'] == $_k):?> selected="selected" <?php endif;?> <?php if(in_array($_k,$this->MappedStoreFields['data1'])):?> style="color:red" <?php endif; ?> ><?php echo $_v;?></option>
+                                            <?php endforeach;?>
+                                            </select>
+                                            <input type="text" name="row[<?php echo $counter;?>][datatext1]" id="row[<?php echo $counter;?>][datatext1]" value="<?php echo $data['data1'];?>" size="10" <?php if($data['type1'] == 0):?> style="display:none" <?php endif;?> />
+                                        </td>
+                                        <td align="center" width="12%"><input type="text" name="row[<?php echo $counter;?>][suffix1]" value="<?php echo $data['suffix1'];?>" size="9" /></td>
+                                        <td align="center" width="3%">
+                                        <?php echo $this->getDeleteButtonHtmlIcon() ?>
+                                        <input type="hidden" name="row[<?php echo $counter;?>][delete]" class="delete-flag" value="" /></td>
+                                    </tr>
+                                	<?php $counter++;?>
+                            	<?php endforeach;?>
+                        	<?php endif;?>
+                        </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php if($counter == 0): $counter = 1; endif;?>
+<script type="text/javascript">
+//<![CDATA[
+var cnt = <?php echo $counter;?>;
+var currentcnt = <?php echo $counter;?>;
+cnt = <?php echo $counter;?>-1;
+
+var templatetext = '<tr>'+
+'<td align="center" width="5%"><input type="text" name="row[{{counter}}][order_by]" size="1" /></td>'+
+'<td align="center" width="11%"><input type="text" name="row[{{counter}}][title]" size="8" /></td>'+
+'<td align="center" width="11%"><input type="text" name="row[{{counter}}][prefix]" size="7" /></td>'+
+'<td align="center" width="10%">'+
+    '<select name="row[{{counter}}][type]" id="row[{{counter}}][type]" onchange="checktype(this,{{counter}});">'+
+        '<option  value="0">Standard</option>'+
+        '<option  value="1">Static</option>'+
+    '</select>'+
+'</td>'+
+'<td align="center" width="13%">'+
+    '<select name="row[{{counter}}][data]" id="row[{{counter}}][data]" style="width:100px;">'+
+        '<option  value="">Select</option>'+
+        <?php foreach($this->StoreFields as $_key=>$_value):?>
+            '<option value="<?php echo $_key;?>" <?php if(in_array($_key,$this->MappedStoreFields['data'])):?> style="color:red" <?php endif; ?>><?php echo $_value;?></option>'+
+        <?php endforeach;?>
+    '</select>'+
+    '<input type="text" name="row[{{counter}}][datatext]" id="row[{{counter}}][datatext]" size="10" style="display:none" /></td>'+
+'<td align="center" width="12%"><input type="text" name="row[{{counter}}][suffix]" size="9" /></td>'+
+'<td align="center" width="10%">'+
+    '<select name="row[{{counter}}][type1]" id="row[{{counter}}][type1]" onchange="checktype1(this,{{counter}});">'+
+        '<option  value="0">Standard</option>'+
+        '<option  value="1">Static</option>'+
+    '</select>'+
+'</td>'+
+'<td align="center" width="13%">'+
+    '<select name="row[{{counter}}][data1]" id="row[{{counter}}][data1]" style="width:100px;">'+
+        '<option  value="">Select</option>'+
+        <?php foreach($this->StoreFields as $_key=>$_value):?>
+            '<option value="<?php echo $_key;?>" <?php if(in_array($_key,$this->MappedStoreFields['data1'])):?> style="color:red" <?php endif; ?>><?php echo $_value;?></option>'+
+        <?php endforeach;?>
+    '</select>'+
+    '<input type="text" name="row[{{counter}}][datatext1]" id="row[{{counter}}][datatext1]" size="10" style="display:none" /></td>'+
+'<td align="center" width="12%"><input type="text" name="row[{{counter}}][suffix1]" size="9" /></td>'+
+'<td align="center" width="3%"><?php echo $this->getDeleteButtonHtmlIcon() ?><input type="hidden" class="delete-flag" value="" name="row[{{counter}}][delete]" /></td>'+
+'</tr>';
+
+var options = {
+		table : $('row-options'),
+		templateText : templatetext,
+		itemCount : currentcnt,
+		newTemplateText : "",
+		add : function(data) {
+			 this.itemCount++;
+			 this.newTemplateText = this.templateText.replace(/{{counter}}/gi,this.itemCount);
+			 this.template = new Template(this.newTemplateText,"");
+			 Element.insert(this.table, {after: this.template.evaluate(data)});
+			 this.bindRemoveButtons();
+		},
+		remove : function(event){
+	        var element = $(Event.findElement(event, 'tr')); // !!! Button already
+	                                                               // have table parent in safari
+	        // Safari workaround
+	        element.ancestors().each(function(parentItem){
+	           if (parentItem.hasClassName('option-row')) {
+	               element = parentItem;
+	               throw $break;
+	           } else if (parentItem.hasClassName('box')) {
+	               throw $break;
+	           }
+	        });
+
+
+	        if(element){
+	            var elementFlags = element.getElementsByClassName('delete-flag');
+	            if(elementFlags[0]){
+	                elementFlags[0].value=1;
+	            }
+
+	            element.addClassName('no-display');
+	            element.addClassName('template');
+	            element.hide();
+	            //this.totalItems--;
+	            //this.updateItemsCountField();
+	        }
+	    },
+		bindRemoveButtons : function(){
+	        var buttons = $$('.delete-option');
+	        for(var i=0;i<buttons.length;i++){
+	            if(!$(buttons[i]).binded){
+	                $(buttons[i]).binded = true;
+	                Event.observe(buttons[i], 'click', this.remove.bind(this));
+	            }
+	        }
+	    }
+}
+    
+Event.observe('create_new_row_button', 'click', options.add.bind(options));
+options.bindRemoveButtons();
+
+function selectAll(flag, form, prefix) {
+    if (!form)
+        return;
+
+    if (prefix)
+        var reg = new RegExp("^"+prefix, "");
+    for (var i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type == "checkbox" && (!prefix || form.elements[i].name.search(reg) == 0) && !form.elements[i].disabled)
+            form.elements[i].checked = flag;
+    }
+}
+
+function checktype(obj,id)
+{
+    var cmbid11 = "";
+    var cmbid1 = "";
+    var cmbid2 = "";
+    var cmbid3 = "";
+    var counter = 0;
+    var subst = "";
+    var subname = "";
+    for(i=0;i<document.feed_mapping.elements.length;i++)
+    {
+        if(document.feed_mapping.elements[i].type == 'select-one')
+        {   
+            subname = document.feed_mapping.elements[i].name;
+            subst = subname.substr(subname.length - 6);
+            
+            if(subst == "[type]")
+            {
+                //cmbid11 = document.feed_mapping.elements[i].name.split("cmbtype[").join("");
+                //cmbid11 = cmbid11.split("]").join("");
+                cmbid1 = subname.replace("type","data")
+                cmbid2 = subname.replace("type","datatext")
+                
+                if(document.feed_mapping.elements[i].value == 1)
+                {
+                    //cmbid1 = "data["+cmbid11+"]";
+                    //cmbid2 = "datatext["+cmbid11+"]";
+                    if(document.getElementById(cmbid1))
+                        document.getElementById(cmbid1).style.display = "none";
+                    if(document.getElementById(cmbid2))
+                        document.getElementById(cmbid2).style.display = "";
+                }
+                else
+                {
+                    //cmbid1 = "data["+cmbid11+"]";
+                    //cmbid2 = "datatext["+cmbid11+"]";
+                    //if(document.getElementById(cmbid1))
+                        document.getElementById(cmbid1).style.display = "";
+                    //if(document.getElementById(cmbid2))
+                        document.getElementById(cmbid2).style.display = "none";
+                }
+            }    
+        }
+    }
+}
+
+function checktype1(obj,id)
+{
+    var cmbid11 = "";
+    var cmbid1 = "";
+    var cmbid2 = "";
+    var cmbid3 = "";
+    var counter = 0;
+    var subst = "";
+    var subname = "";
+
+    for(i=0;i<document.feed_mapping.elements.length;i++)
+    {
+        if(document.feed_mapping.elements[i].type == 'select-one')
+        {   
+            subname = document.feed_mapping.elements[i].name;
+            subst = subname.substr(subname.length - 6);
+            
+            if(subst == "type1]")
+            {
+                //cmbid11 = document.feed_mapping.elements[i].name.split("cmbtype[").join("");
+                //cmbid11 = cmbid11.split("]").join("");
+                cmbid1 = subname.replace("type","data")
+                cmbid2 = subname.replace("type","datatext")
+                
+                if(document.feed_mapping.elements[i].value == 1)
+                {
+                    //cmbid1 = "data["+cmbid11+"]";
+                    //cmbid2 = "datatext["+cmbid11+"]";
+                    if(document.getElementById(cmbid1))
+                        document.getElementById(cmbid1).style.display = "none";
+                    if(document.getElementById(cmbid2))
+                        document.getElementById(cmbid2).style.display = "";
+                }
+                else
+                {
+                    //cmbid1 = "data["+cmbid11+"]";
+                    //cmbid2 = "datatext["+cmbid11+"]";
+                    //if(document.getElementById(cmbid1))
+                        document.getElementById(cmbid1).style.display = "";
+                    //if(document.getElementById(cmbid2))
+                        document.getElementById(cmbid2).style.display = "none";
+                }
+            }    
+        }
+    }
+}
+
+var mappingForm = new varienForm('feed_mapping', '');
+    mappingForm._processValidationResult = function(transport) {
+    var response = transport.responseText.evalJSON();
+    if (response.error){
+        if (response.attribute && $(response.attribute)) {
+            $(response.attribute).setHasError(true, productForm);
+            Validation.ajaxError($(response.attribute), response.message);
+            $(response.attribute).focus();
+        }
+        else if ($('messages')) {
+            $('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
+        }
+    }
+    else{
+        mappingForm._submit();
+    }
+};
+
+var mappingimportexportForm = new varienForm('feed_mapping_ex_im', '');
+    mappingimportexportForm._processValidationResult = function(transport) {
+    var response = transport.responseText.evalJSON();
+    if (response.error){
+        if (response.attribute && $(response.attribute)) {
+            $(response.attribute).setHasError(true, productForm);
+            Validation.ajaxError($(response.attribute), response.message);
+            $(response.attribute).focus();
+        }
+        else if ($('messages')) {
+            $('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
+        }
+    }
+    else{
+        mappingimportexportForm._submit();
+    }
+};
+//]]>
+</script>

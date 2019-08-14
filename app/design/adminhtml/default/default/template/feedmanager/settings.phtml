@@ -1,0 +1,111 @@
+<?php 
+/*************************************************************
+*                          feed_v2.7				*
+*************************************************************/
+
+?>
+<div class="content-header">
+    <h3 class="icon-head"><?php echo $this->getHeader() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml() ?>
+    <?php echo $this->getSaveSettingsButtonHtml();?>
+    <?php if(!empty($this->IsSettings)):echo $this->getMapingButtonHtml(); endif;?>    
+    </p>
+</div>
+<form action="<?php echo $this->getSaveSettingsUrl() ?>" method="post" name="feed_settings" id="feed_settings" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="feed_id" value="<?php echo $this->getRequest()->getParam('id');?>" />
+    <?php if(!empty($this->IsSettings)):?>
+    <input type="hidden" name="feedmanagersettigns_id" value="<?php echo $this->IsSettings->getFeedmanagersettingsId();?>" />
+    <?php endif;?>
+    <div style="display:none"></div>
+    <div id="chaneladvisor_tabs_settings_content">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Feed Settings")?></h4>
+                <div class="form-buttons"></div>
+            </div>
+            <div class="fieldset " id="settings">
+                <div class="hor-scroll">
+                    <table cellspacing="2" class="form-list">
+                        <tr>
+                            <td class="value"><input id="flag" name="flag" type="radio" value="0" checked="checked" /></td>
+                            <td colspan="2"  class="label"><?php echo $this->__("Select Options");?></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="label"><?php echo $this->__("Export disabled Products");?></td>
+                            <td class="value"><select name="export_disabled_products">
+                                <option value="N" <?php if(isset($this->IsSettings['export_disabled_products']) && $this->IsSettings['export_disabled_products'] == 'N'):?> selected="selected" <?php endif;?>><?php echo $this->__("No");?></option>
+                                <option value="Y" <?php if(isset($this->IsSettings['export_disabled_products']) && $this->IsSettings['export_disabled_products'] == 'Y'):?> selected="selected" <?php endif;?>><?php echo $this->__("Yes");?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="label"><?php echo $this->__("Export Out of stock Products");?></td>
+                            <td class="value"><select name="export_out_stock_products">
+                                <option value="N" <?php if(isset($this->IsSettings['export_out_stock_products']) && $this->IsSettings['export_out_stock_products'] == 'N'):?> selected="selected" <?php endif;?>><?php echo $this->__("No");?></option>
+                                <option value="Y" <?php if(isset($this->IsSettings['export_out_stock_products']) && $this->IsSettings['export_out_stock_products'] == 'Y'):?> selected="selected" <?php endif;?>><?php echo $this->__("Yes");?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="label"><?php echo $this->__("Export Zero price Products");?></td>
+                            <td class="value"><select name="export_zero_price_products">
+                                <option value="N" <?php if(isset($this->IsSettings['export_zero_price_products']) && $this->IsSettings['export_zero_price_products'] == 'N'):?> selected="selected" <?php endif;?>><?php echo $this->__("No");?></option>
+                                <option value="Y" <?php if(isset($this->IsSettings['export_zero_price_products']) && $this->IsSettings['export_zero_price_products'] == 'Y'):?> selected="selected" <?php endif;?>><?php echo $this->__("Yes");?></option>
+                                </select>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><hr size="1"></td>
+                        </tr>
+                        <tr>
+                            <td class="value"><input id="flag" name="flag" type="radio" value="1" <?php if(isset($this->IsSettings['flag']) && $this->IsSettings['flag'] == 1):?> checked="checked" <?php endif;?> /></td>
+                            <td colspan="2"  class="label"><?php echo $this->__("Upload SKU List");?> : <?php echo $this->__("These SKUs will be Considered while creating the feed");?></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="label"><?php echo $this->__("Upload Text(.txt) file");?></td>
+                            <td class="value"><input type="file" name="skulist" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><hr size="1"></td>
+                        </tr>
+                         <tr>
+                            <td class="value"><input id="flag" name="flag" type="radio" value="2" <?php if(isset($this->IsSettings['flag']) && $this->IsSettings['flag'] == 2):?> checked="checked" <?php endif;?> /></td>
+                            <td colspan="2"  class="label"><?php echo $this->__("Upload SKU List");?> : <?php echo $this->__("These SKUs will be ignored while creating the feed");?></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="label"><?php echo $this->__("Upload Text(.txt) file");?></td>
+                            <td class="value"><input type="file" name="skulistignore" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var settingsForm = new varienForm('feed_settings', '');
+    settingsForm._processValidationResult = function(transport) {
+        var response = transport.responseText.evalJSON();
+        if (response.error){
+            if (response.attribute && $(response.attribute)) {
+                $(response.attribute).setHasError(true, productForm);
+                Validation.ajaxError($(response.attribute), response.message);
+                $(response.attribute).focus();
+            }
+            else if ($('messages')) {
+                $('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul><li>' + response.message + '</li></ul></li></ul>';
+            }
+        }
+        else{
+            settingsForm._submit();
+        }
+    };
+//]]>    
+</script>

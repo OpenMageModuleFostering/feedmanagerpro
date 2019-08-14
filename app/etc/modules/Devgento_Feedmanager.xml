@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--  
+/*************************************************************
+*                          feed_v2.7                	     *
+*************************************************************/
+-->
+<config>
+    <modules>
+        <Devgento_Feedmanager>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Devgento_Feedmanager>
+    </modules>
+</config> 

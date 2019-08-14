@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/*************************************************************
+*                          feed_v2.7								 *
+*************************************************************/
+ -->
+<config>
+	<modules>
+		<Devgento_Feedmanager>
+			<version>2.7</version>
+			<url>http://www.devgento.com/unlimited-magento-feed-manager-shopping-comparison-data-feed</url>
+			<modulename>Feedmanager</modulename>
+		</Devgento_Feedmanager>
+	</modules>
+	<feedmanager><version>2.7</version></feedmanager>
+	<frontend>
+		<routers>
+			<feedmanager>
+				<use>standard</use>
+				<args>
+					<module>Devgento_Feedmanager</module>
+					<frontName>feedmanager</frontName>
+				</args>
+			</feedmanager>
+		</routers>
+		<layout>
+			<updates><feedmanager><file>feedmanager.xml</file></feedmanager></updates>
+		</layout>
+	</frontend>
+	<admin>
+		<routers>
+			<feedmanager>
+				<use>admin</use>
+				<args>
+					<module>Devgento_Feedmanager</module>
+					<frontName>feedmanager</frontName>
+				</args>
+			</feedmanager>
+		</routers>
+	</admin>
+	<adminhtml>
+		<menu>
+			<catalog translate="title" module="catalog">
+				<children>
+					<feedmanager translate="title">
+						<title>Feed Manager</title>
+						<sort_order>250</sort_order>
+						<action>feedmanager/adminhtml_feedmanager</action>
+					</feedmanager>
+				</children>
+			</catalog>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<feedmanager><title>Feedmanager</title></feedmanager>
+										<devgento_info><title>Info</title></devgento_info>
+									</children>
+								</config>
+							</children>
+						</system>
+						<catalog translate="title" module="catalog">
+							<children>
+								<feedmanager translate="title">
+									<title>Feed Manager</title>
+									<sort_order>250</sort_order>
+								</feedmanager>
+							</children>
+						</catalog>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates><feedmanager><file>feedmanager.xml</file></feedmanager></updates>
+		</layout>
+		<translate>
+			<modules>
+				<Devgento_Feedmanager><files><default>Devgento_Feedmanager.csv</default></files></Devgento_Feedmanager>
+			</modules>
+		</translate>
+	</adminhtml>
+	<global>
+		<models>
+			<feedmanager>
+				<class>Devgento_Feedmanager_Model</class>
+				<resourceModel>feedmanager_mysql4</resourceModel>
+			</feedmanager>
+			<feedmanager_mysql4>
+				<class>Devgento_Feedmanager_Model_Mysql4</class>
+				<entities>
+					<feedmanager><table>feedmanager</table></feedmanager>
+					<feedmanagersettings><table>feedmanagersettings</table></feedmanagersettings>
+					<feedmanagermapping><table>feedmanagermapping</table></feedmanagermapping>
+					<feedmanagerftpdetail><table>feedmanagerftpdetail</table></feedmanagerftpdetail>
+					<feedmanagerversion><table>feedmanagerversion</table></feedmanagerversion>
+				</entities>
+			</feedmanager_mysql4>
+		</models>
+		<resources>
+			<feedmanager_setup>
+				<setup>
+					<module>Devgento_Feedmanager</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</feedmanager_setup>
+			<feedmanager_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</feedmanager_write>
+			<feedmanager_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</feedmanager_read>
+		</resources>
+		<blocks>
+			<feedmanager>
+				<class>Devgento_Feedmanager_Block</class>
+			</feedmanager>
+		</blocks>
+		<helpers>
+			<feedmanager>
+				<class>Devgento_Feedmanager_Helper</class>
+			</feedmanager>
+		</helpers>
+	</global>
+</config>
